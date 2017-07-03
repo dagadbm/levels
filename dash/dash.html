@@ -22,7 +22,7 @@
 <div class="box loading emt" ng-if="user && !verifier.federation">
   <span>
         <i class="fa fa-spinner fa-spin fa-4x fa-fw"></i><br/>
-        Loading data, if this message persists you may not be authorized to use this page, if so go to <a href="https://the-tricktionary.com">the Tricktionary</a>
+        Loading data, if this message persists you may not be authorized to use this page, if so go to <a href="https://the-tricktionary.com">the Tricktionary</a><br/>signed in as {{ user.uid }}
     </span>
 </div>
 <div class="box" ng-repeat="level in data" ng-if="user && verifier.federation">
