@@ -1,0 +1,21 @@
+<a ng-href="/#{{ id0 + '' + id1 }}" class="back"><i class="fa fa-chevron-circle-left fa-2x"></i></a>
+<h1><span class="small gray"></span>{{ trick.name }}</h1>
+<p><span class="gray"></span>{{ trick.description }}</p>
+<div class="center">
+  <div class="video emb">
+    <iframe class="video" ng-src="{{ trustAsResourceUrl('https://www.youtube-nocookie.com/embed/' + trick.video + '?loop=1&playsinline=1&rel=0') }}"
+      frameborder="0" allowfullscreen></iframe>
+    <div>
+      <span class="center level"><span class="gray small">{{ verifier.federation }} Level:</span>      {{ trick.levels[verifier.federation].level }}
+      <i ng-if="level.vLevel >= 0" class="fa fa-check small" ng-class="(level.vLevel == '1' ? 'gold' : 'gray')"></i></span>
+    </div>
+  </div>
+  <button ng-click="verify()" class="green inline" ng-disabed="!level.$resolved"><i class="fa fa-check"></i> Verify this trick's level</button>
+  <span>{{ status }}</span>
+</div>
+<div class="box">
+  <a class="parent half" ng-href="/details/{{ (id1 == 0 ? id0 - 1 : id0) }}/{{ (id1 == 0 ? prevMax : id1 - 1) }}"
+    ng-if="!(id0 == 0 && id1 == 0)"><i class="fa fa-chevron-left"></i> Previous</a>
+  <a class="parent half" ng-href="/details/{{ (id1 == thisMax ? id0 + 1 : id0) }}/{{ (id1 == thisMax ? 0 : id1 + 1) }}"
+    ng-if="!(id0 == levMax && id1 == thisMax)">Next <i class="fa fa-chevron-right"></i></a>
+</div>

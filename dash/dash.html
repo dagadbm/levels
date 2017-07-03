@@ -1,0 +1,35 @@
+<div class="search">
+  <input type="text" ng-model="trickList.search" class="search-query" id="projects_search"
+    placeholder="Search (by name, prerequisites...)">
+</div>
+<div class="error center" ng-if="error.show"><span ng-bind-html="error.text"></span>
+  <a class="close" ng-click="error.show = !error.show"><i class="fa fa-times-circle"></i></a>
+</div>
+<span ng-if="user && verifier.federation && verifier.vLevel >= 0" class="pr black">Signed in as: {{ verifier.vLevel == 1 ? verifier.federation + ' Official' : 'Certified ' + verifier.federation + ' Judge' }}</span>
+<a ng-click="hideDone = !hideDone" class="pl black" ng-class="(error.show ? '' : 'emt')"
+  ng-show="user && verifier.federation"><i ng-class="(hideDone ? 'checked' : '')" class="checkbox"></i> Hide verified
+    tricks
+</a>
+<div class="box loading emt" ng-if="!data.length && user && verifier.federation">
+  <span>
+        <i class="fa fa-spinner fa-spin fa-4x fa-fw"></i><br/>
+        Loading tricks
+    </span>
+</div>
+<div class="box loading emt" ng-if="!user">
+  <span>You must be signed in to use this page, use the sign in button in the top right corner.</span>
+</div>
+<div class="box loading emt" ng-if="user && !verifier.federation">
+  <span>
+        <i class="fa fa-spinner fa-spin fa-4x fa-fw"></i><br/>
+        Loading data, if this message persists you may not be authorized to use this page, if so go to <a href="https://the-tricktionary.com">the Tricktionary</a>
+    </span>
+</div>
+<div class="box" ng-repeat="level in data" ng-if="user && verifier.federation">
+  <h2 class="searchheader">Level {{ level.level }}</h2>
+  <a class="parent" ng-href="/details/{{ level.id0 }}/{{ trick.id1 }}" ng-repeat="trick in level.subs | orderBy:'id1' | filter:trickList.search"
+    id="{{ level.id0 + '' + trick.id1 }}" ng-class="class(level.id0, trick.id1, trick.levels[verifier.federation].verified, verifier.vLevel)"
+    ng-hide="hideDone && trick.levels[verifier.federation].verified && trick.levels[verifier.federation].verified.vLevel >= verifier.vLevel">
+    {{ trick.name }}
+  </a>
+</div>
