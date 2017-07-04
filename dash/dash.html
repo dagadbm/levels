@@ -29,7 +29,7 @@
   <h2 class="searchheader">Level {{ level.level }}</h2>
   <a class="parent" ng-href="/details/{{ level.id0 }}/{{ trick.id1 }}" ng-repeat="trick in level.subs | orderBy:'id1' | filter:trickList.search"
     id="{{ level.id0 + '' + trick.id1 }}" ng-class="class(level.id0, trick.id1, trick.levels[verifier.federation].verified, verifier.vLevel)"
-    ng-hide="hideDone && trick.levels[verifier.federation].verified && trick.levels[verifier.federation].verified.vLevel >= verifier.vLevel">
+    ng-hide="hideDone && trick.levels[verifier.federation].verified && trick.levels[verifier.federation].verified.verified && trick.levels[verifier.federation].verified.vLevel >= verifier.vLevel">
     {{ trick.name }}
   </a>
 </div>

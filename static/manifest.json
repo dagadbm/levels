@@ -8,17 +8,18 @@
   "offline_enabled": true,
   "description": "A dictionary of jumprope tricks categorised after difficulty and completed with prerequisites and videos.",
   "lang": "en",
+  "gcm_sender_id": "103953800507",
   "prefer_related_applications": true,
   "icons": [{
-    "src": "static/img/icon.png",
+    "src": "https://the-tricktionary.com/static/img/icon.png",
     "sizes": "2048x2048",
     "type": "image/png"
   }, {
-    "src": "static/img/icon512.png",
+    "src": "ttps://the-tricktionary.com/static/img/icon512.png",
     "sizes": "512x512",
     "type": "image/png"
   }, {
-    "src": "static/img/tricktionary2.svg",
+    "src": "ttps://the-tricktionary.com/static/img/tricktionary2.svg",
     "sizes": "2048x2048",
     "type": "image/svg+xml"
   }],
