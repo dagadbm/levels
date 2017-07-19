@@ -1,17 +1,22 @@
 <a ng-href="/#{{ id0 + '' + id1 }}" class="back"><i class="fa fa-chevron-circle-left fa-2x"></i></a>
-<h1><span class="small gray"></span>{{ trick.name }}</h1>
-<p><span class="gray"></span>{{ trick.description }}</p>
-<div class="center">
+<h1>{{ trick.name }}</h1>
+<p>{{ trick.description }}</p>
+<div class="center mb">
   <div class="video emb">
     <iframe class="video" ng-src="{{ trustAsResourceUrl('https://www.youtube-nocookie.com/embed/' + trick.video + '?loop=1&playsinline=1&rel=0') }}"
       frameborder="0" allowfullscreen></iframe>
     <div>
       <span class="center level"><span class="gray small">{{ verifier.federation }} Level:</span>      {{ trick.levels[verifier.federation].level }}
-      <i ng-if="level.vLevel >= 0" class="fa fa-check small" ng-class="(level.vLevel == '1' ? 'gold' : 'gray')"></i></span>
+      <i ng-if="level.verified" class="fa fa-check small" ng-class="(level.vLevel == '1' ? 'gold' : 'gray')"></i></span>
     </div>
   </div>
-  <button ng-click="verify()" class="green inline" ng-disabed="!level.$resolved"><i class="fa fa-check"></i> Verify this trick's level</button>
-  <span>{{ status }}</span>
+  <div>
+    <button ng-click="verify()" class="green inline" ng-disabed="!level.$resolved"><i class="fa fa-check"></i> Verify this trick's level</button>
+    <button ng-click="withdraw()" class="red inline" ng-disabed="!level.$resolved"><i class="fa fa-times"></i> Withraw this trick's verification</button><br/>
+    <span>{{ status }}</span>
+  </div>
+  <label>Suggest new level: <input type="text" class="char" ng-model="level.suggestion" /></label>
+  <button ng-click="suggest()" class="inline" ng-disabed="!level.$resolved"><i class="fa fa-question"></i> Submit suggestion</button>
 </div>
 <div class="box">
   <a class="parent half" ng-href="/details/{{ (id1 == 0 ? id0 - 1 : id0) }}/{{ (id1 == 0 ? prevMax : id1 - 1) }}"

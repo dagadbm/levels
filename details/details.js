@@ -39,6 +39,35 @@ angular.module('trick.details', ['ngRoute'])
       $scope.level.vLevel = $scope.verifier.vLevel
       $scope.level.date = $filter('date')((new Date()), 'yyyy-MM-dd')
       $scope.level.verifier = $scope.user.uid
+      $scope.level.verified = true
+      $scope.level.$save()
+        .then(function() {
+          $scope.status = "saved";
+        })
+    }
+
+    $scope.withdraw = function() {
+      if ($scope.level.vLevel > $scope.verifier.vLevel) {
+        return $scope.status = "Judges can't override federation officials"
+      }
+      $scope.level.vLevel = $scope.verifier.vLevel
+      $scope.level.date = $filter('date')((new Date()), 'yyyy-MM-dd')
+      $scope.level.verifier = $scope.user.uid
+      $scope.level.verified = false
+      $scope.level.$save()
+        .then(function() {
+          $scope.status = "saved";
+        })
+    }
+
+    $scope.suggest = function() {
+      if ($scope.level.vLevel > $scope.verifier.vLevel) {
+        return $scope.status = "Judges can't override federation officials"
+      }
+      $scope.level.vLevel = $scope.verifier.vLevel
+      $scope.level.date = $filter('date')((new Date()), 'yyyy-MM-dd')
+      $scope.level.verifier = $scope.user.uid
+      $scope.level.verified = false
       $scope.level.$save()
         .then(function() {
           $scope.status = "saved";

@@ -3,7 +3,9 @@ var config = {
   apiKey: "AIzaSyD07mROu__kGOuJ-0MyjtjS6R5-DiTfUpM",
   authDomain: "project-5641153190345267944.firebaseapp.com",
   databaseURL: "https://project-5641153190345267944.firebaseio.com",
-  storageBucket: "project-5641153190345267944.appspot.com"
+  projectId: "project-5641153190345267944",
+  storageBucket: "project-5641153190345267944.appspot.com",
+  messagingSenderId: "1048157266079"
 };
 firebase.initializeApp(config);
 
@@ -16,6 +18,7 @@ angular.module('trick', [
   'ngRoute',
   'trick.dash',
   'trick.details',
+  'trick.admin',
   'firebase'
 ])
 

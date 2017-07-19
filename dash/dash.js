@@ -37,7 +37,7 @@ angular.module('trick.dash', ['ngRoute'])
     $scope.class = function(id0, id1, verified, vLevel) {
       var x = "";
       x += (id0 + '' + id1 == anchor ? 'pop ' : '');
-      if (verified && verified.vLevel >= vLevel) {
+      if (verified && verified.verified && verified.vLevel >= vLevel) {
         x += 'done'
       }
       return x;
