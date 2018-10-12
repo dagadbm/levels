@@ -80,7 +80,7 @@ angular.module('trick', [
     $rootScope.Error = function (e, bool) {
       $rootScope.error = {
         text: e,
-        show: (bool == undefined ? true : bool)
+        show: (bool === undefined ? true : bool)
       }
     }
 
